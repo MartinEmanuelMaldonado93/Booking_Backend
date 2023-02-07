@@ -1,5 +1,14 @@
-import mongoose from "mongoose";
-const RoomSchema = new mongoose.Schema(
+import { Schema, model, Document } from "mongoose";
+
+interface Room extends Document {
+  title: string;
+  price: string;
+  maxPeople: number;
+  desc: number;
+  roomNumber: { numberRoom: number; unavailableDates: string[] }[];
+}
+
+const RoomSchema = new Schema(
   {
     title: {
       type: String,
@@ -22,4 +31,4 @@ const RoomSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Room", RoomSchema);
+export default model<Room>("Room", RoomSchema);
