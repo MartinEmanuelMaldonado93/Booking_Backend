@@ -3,7 +3,9 @@ import { createError } from "../services/createError";
 import jwt from "jsonwebtoken";
 import { callbackController } from "../types";
 import UserModel, { I_User } from "../models/User.model";
+import { TOKEN_KEY } from "../services/constants";
 
+// no cookies 
 export const register = async ({ req, res, next }: callbackController) => {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(req.body.password, salt);
@@ -58,7 +60,7 @@ export const login = async ({ req, res, next }: callbackController) => {
     const { password, isAdmin, ...otherDetails } = foundUserMongo._doc; // don't send private data
 
     res
-      .cookie("access_token", token, {
+      .cookie(TOKEN_KEY, token, {
         httpOnly: false,
       })
       .status(200)
