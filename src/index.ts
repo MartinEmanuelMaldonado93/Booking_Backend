@@ -1,4 +1,4 @@
-import "./lib/db";
+import "./database/db";
 import express, {
   ErrorRequestHandler,
   NextFunction,
@@ -9,11 +9,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { connect } from "./lib/db";
+import { connect } from "./database/db";
 
 const app = express();
 dotenv.config();
-const port = process.env.PORT || 3333;
+const port = process.env.PORT || 7777;
 
 app.use(cors());
 app.use(cookieParser());

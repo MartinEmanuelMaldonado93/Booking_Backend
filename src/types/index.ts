@@ -7,3 +7,9 @@ export type callbackController = {
 };
 
 export type CustomCookies = string | null | undefined;
+
+export type SignToken = {
+  token: string;
+  id: number;
+  userName: string;
+};

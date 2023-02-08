@@ -3,7 +3,7 @@ import { createError } from "./createError";
 import jwt, { Jwt, JwtPayload, VerifyErrors } from "jsonwebtoken";
 import { I_User } from "../models/User.model";
 import { CustomCookies, callbackController } from "../types";
-import { TOKEN_KEY } from "./constants";
+import { ACCESS_TOKEN } from "./constants";
 
 export interface CustomRequest extends Request {
   token?: string | JwtPayload;
@@ -15,7 +15,7 @@ export interface CustomRequest extends Request {
 
 export const verifyToken = ({ req, res, next }: callbackController) => {
   console.log(req.cookies);
-  const token = req.cookies[TOKEN_KEY] as CustomCookies;
+  const token = req.cookies[ACCESS_TOKEN] as CustomCookies;
 
   try {
     if (!token) {

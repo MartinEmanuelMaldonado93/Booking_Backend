@@ -1,6 +1,6 @@
 import { Schema, model, Document } from "mongoose";
 
-interface Room extends Document {
+export interface Room extends Document {
   title: string;
   price: string;
   maxPeople: number;
