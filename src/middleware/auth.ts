@@ -1,18 +1,22 @@
 import jwt, { Secret, JwtPayload } from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { ACCESS_TOKEN } from "../services/constants";
-import { login } from "../controllers/Sign.controller";
+import { ACCESS_TOKEN } from "../helpers/constants";
+
+let SECRET_KEY = process.env.JWT || "";
 
 export interface CustomRequest extends Request {
   adminToken: string | JwtPayload;
 }
+
 export const createJWTToken = async (
   adminId: number,
   adminName: string
 ): Promise<string> => {
+  if (!process.env.JWT) return "";
+
   const token = jwt.sign(
-    { id: adminId.toString(), name: adminName },
-    process.env.JWT || "",
+    { id: adminId.toString(), userName: adminName },
+    process.env.JWT,
     {
       expiresIn: "2 days",
     }
@@ -20,14 +24,14 @@ export const createJWTToken = async (
 
   return token;
 };
+
 export const auth = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.header("Authorization")?.split(" ")[1];
-    // const token = req.cookies[TOKEN_KEY] as string | null | undefined;// verify cookies in req
     if (!token) throw new Error("No authorized");
 
-    const decoded = jwt.verify(token, process.env.JWT!);
-    (req as CustomRequest).adminToken = decoded; //need to decode to work with information
+    const decoded = jwt.verify(token, SECRET_KEY);
+    (req as CustomRequest).adminToken = decoded;
 
     next();
   } catch (err) {

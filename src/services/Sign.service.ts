@@ -5,13 +5,11 @@ import { createJWTToken } from "../middleware/auth";
 
 export const signUpService = async (
   nameReceived: string,
-  emailReceived: string,
   password: string
 ): Promise<I_User> => {
   const hashedPassword = await hashPassword(password);
   const newUser = await new UserModel({
     userName: nameReceived,
-    email: emailReceived,
     password: hashedPassword,
   }).save();
 
@@ -24,8 +22,8 @@ export const signInService = async (
   signName: string,
   signinPassword: string
 ): Promise<SignToken> => {
-  const userSignIn = await UserModel.findOne({ name: signName });
-  if (!userSignIn) throw new Error("User is not found");
+  const userSignIn = await UserModel.findOne({ userName: signName });
+  if (!userSignIn) throw new Error("User is not found.");
 
   const { id, userName, password } = userSignIn;
 
@@ -33,6 +31,7 @@ export const signInService = async (
   if (!isMatch) throw new Error("Password incorrect.");
 
   const token = await createJWTToken(id, userName);
+  if (!token) throw new Error("Secret key is empty!.");
 
   return { id, userName, token };
 };
