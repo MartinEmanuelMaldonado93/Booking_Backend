@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 export const connect = async () => {
-  if (!process.env.MONGO) {
-    throw new Error("Please add the MONGO_URL environment variable");
-  }
+  // if (!process.env.MONGO) {
+  //   throw new Error("Please add the MONGO_URL environment variable");
+  // }
   
   try {
     await mongoose.connect(process.env.MONGO!, {
