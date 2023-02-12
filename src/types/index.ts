@@ -6,8 +6,6 @@ export type callbackController = {
   next: NextFunction;
 };
 
-export type CustomCookies = string | null | undefined;
-
 export type SignToken = {
   token: string;
   id: number;

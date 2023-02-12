@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { signInService, signUpService } from "../services/Sign.service";
+import { signInService, signUpService } from "../services/Login.service";
 
-export const SignUp = async (req: Request, res: Response): Promise<void> => {
+export const signUp = async (req: Request, res: Response): Promise<void> => {
   const { userName, password } = req.body;
 
   try {
@@ -12,7 +12,7 @@ export const SignUp = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const SignIn = async (req: Request, res: Response): Promise<void> => {
+export const signIn = async (req: Request, res: Response): Promise<void> => {
   const { userName, password } = req.body;
   try {
     const user = await signInService(userName, password);

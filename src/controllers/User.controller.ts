@@ -23,11 +23,11 @@ export const deleteUser: RequestHandler = async (req, res) => {
   }
 };
 
-export const getUser: RequestHandler = async (req, res, next) => {
+export const getUserById: RequestHandler = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) throw new Error("user is not found");
-    
+
     res.status(200).json(user);
   } catch (error) {
     next(error);

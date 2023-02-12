@@ -1,8 +1,5 @@
-import jwt, { Secret, JwtPayload } from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { ACCESS_TOKEN } from "../helpers/constants";
-
-let SECRET_KEY = process.env.JWT || "";
 
 export interface CustomRequest extends Request {
   adminToken: string | JwtPayload;
@@ -25,12 +22,13 @@ export const createJWTToken = async (
   return token;
 };
 
-export const auth = async (req: Request, res: Response, next: NextFunction) => {
+export const authorization = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    if (!process.env.JWT) return;
     const token = req.header("Authorization")?.split(" ")[1];
     if (!token) throw new Error("No authorized");
 
-    const decoded = jwt.verify(token, SECRET_KEY);
+    const decoded = jwt.verify(token, process.env.JWT);
     (req as CustomRequest).adminToken = decoded;
 
     next();
