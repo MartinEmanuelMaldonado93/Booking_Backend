@@ -4,12 +4,12 @@ import mongoose from "mongoose";
 // dotenv.config({ path: path.join(__dirname, ".env") });
 
 export const connect = async () => {
-  if (!process.env.MONGO) {
+  if (!process.env.MONGO_URL) {
     throw new Error("Please add the MONGO_URL environment variable");
   }
 
   try {
-    await mongoose.connect(process.env.MONGO!, {
+    await mongoose.connect(process.env.MONGO_URL!, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
