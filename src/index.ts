@@ -6,15 +6,17 @@ import express, {
   Response,
 } from "express";
 import dotenv from "dotenv";
+import path from "path";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { connect } from "./database/db";
 import { hotel, login, rooms, user } from "./routes";
 
 const app = express();
-dotenv.config();
+// dotenv.config({ path: path.join(__dirname, ".env") });
+dotenv.config({ path: ".env" });
+
 const port = process.env.PORT || 8800;
-console.log(process.env.MONGO);
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
