@@ -14,7 +14,7 @@ import { hotel, login, rooms, user } from "./routes";
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 8800;
-
+console.log(process.env.MONGO);
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());

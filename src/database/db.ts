@@ -13,7 +13,7 @@ export const connect = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    console.log("Connected to mongoDB.");
+    // console.log("Connected to mongoDB.");
   } catch (error) {
     throw error;
   }
@@ -26,6 +26,6 @@ database.on(
   console.error.bind(console, "❌ mongodb connection error")
 );
 database.on("disconnected", () => console.log("mongoDB disconnected!"));
-// database.once("open", () => console.log("✅ mongodb connected successfully"));
+database.once("open", () => console.log("✅ mongodb connected successfully"));
 
 mongoose.Promise = Promise;
