@@ -1,6 +1,6 @@
 import UserModel, { I_User } from "../models/User.model";
 import { hashPassword, verifyPassword } from "../middleware/bcrypt";
-import { SignToken } from "../types";
+import { UserToken } from "../types";
 import { createJWTToken } from "../middleware/auth";
 
 export const signUpService = async (
@@ -8,6 +8,7 @@ export const signUpService = async (
   password: string
 ): Promise<I_User> => {
   const hashedPassword = await hashPassword(password);
+
   const newUser = await new UserModel({
     userName: nameReceived,
     password: hashedPassword,
@@ -21,7 +22,7 @@ export const signUpService = async (
 export const signInService = async (
   signName: string,
   signinPassword: string
-): Promise<SignToken> => {
+): Promise<UserToken> => {
   const userSignIn = await UserModel.findOne({ userName: signName });
   if (!userSignIn) throw new Error("User is not found.");
 
@@ -31,7 +32,7 @@ export const signInService = async (
   if (!isMatch) throw new Error("Password incorrect.");
 
   const token = await createJWTToken(id, userName);
-  if (!token) throw new Error("Secret key is empty!.");
+  if (!token) throw new Error("create token fail");
 
   return { id, userName, token };
 };

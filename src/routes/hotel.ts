@@ -8,17 +8,18 @@ import {
   getHotels,
   updateHotel,
 } from "../controllers/Hotel.controller";
+import { authorization } from "../middleware/auth";
 
 const router = express.Router();
 
 // CREATE
 router.post("/", createHotel);
-// // UPDATE
+// UPDATE
 router.put("/:id", updateHotel);
-// // DELETE
+// DELETE
 router.delete("/:id", deleteHotel);
-// // GET
-router.get("/hotels", getHotels);
+// GET
+router.get("/", authorization, getHotels);
 router.get("/find/:id", getHotelById);
 router.get("/countByCity", countByCity);
 router.get("/countByType", countByType);

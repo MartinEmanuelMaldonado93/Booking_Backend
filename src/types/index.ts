@@ -1,12 +1,4 @@
-import { NextFunction, Request, Response } from "express";
-
-export type callbackController = {
-  req: Request;
-  res: Response;
-  next: NextFunction;
-};
-
-export type SignToken = {
+export type UserToken = {
   token: string;
   id: number;
   userName: string;

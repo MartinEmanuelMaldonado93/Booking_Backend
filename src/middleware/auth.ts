@@ -2,7 +2,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 
 export interface CustomRequest extends Request {
-  adminToken: string | JwtPayload;
+  token: string | JwtPayload;
 }
 
 export const createJWTToken = async (
@@ -24,12 +24,12 @@ export const createJWTToken = async (
 
 export const authorization = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    if (!process.env.JWT) return;
+    if (!process.env.JWT) throw new Error("JWT variable empty.");
     const token = req.header("Authorization")?.split(" ")[1];
-    if (!token) throw new Error("No authorized");
+    if (!token) throw new Error("No token authorized");
 
     const decoded = jwt.verify(token, process.env.JWT);
-    (req as CustomRequest).adminToken = decoded;
+    (req as CustomRequest).token = decoded;
 
     next();
   } catch (err) {

@@ -1,4 +1,4 @@
-import { RequestHandler } from "express";
+import { NextFunction, RequestHandler, Response } from "express";
 import Hotel from "../models/Hotel.model";
 
 export const createHotel: RequestHandler = async (req, res, next) => {
@@ -43,7 +43,7 @@ export const getHotels: RequestHandler = async (req, res, next) => {
         $gt: min || 1, // greater than...
         $lt: max || 999, // less than...
       },
-    }).limit(limit); // search featured property
+    }).limit(Number(limit)); // search featured property
     res.status(200).json(hotels);
   } catch (error) {
     next(error);

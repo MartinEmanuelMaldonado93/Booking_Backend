@@ -21,7 +21,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-app.use("/api", hotel);
+app.use("/api/hotels", hotel);
 app.use("/api/auth", login);
 app.use("/api/users", user);
 app.use("/api/rooms", rooms);
