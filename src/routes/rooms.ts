@@ -6,6 +6,7 @@ import {
   getRoom,
   updateRoom,
 } from "../controllers/Room.controller";
+import { authorization } from "../middleware/auth";
 
 const router = express.Router();
 // CREATE
@@ -15,7 +16,7 @@ router.put("/:id", updateRoom);
 // DELETE
 router.delete("/:id", deleteRoom);
 // GET
-router.get("/", getRooms);
-router.get("/:id", getRoom);
+router.get("/", authorization, getRooms);
+router.get("/:id", authorization, getRoom);
 
 export default router;

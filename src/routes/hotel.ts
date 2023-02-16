@@ -19,7 +19,7 @@ router.put("/:id", updateHotel);
 // DELETE
 router.delete("/:id", deleteHotel);
 // GET
-router.get("/", authorization, getHotels);
+router.get("/", getHotels);
 router.get("/find/:id", getHotelById);
 router.get("/countByCity", countByCity);
 router.get("/countByType", countByType);
