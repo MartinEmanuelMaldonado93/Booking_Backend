@@ -13,7 +13,6 @@ import { connect } from "./database/db";
 import { hotel, login, rooms, user } from "./routes";
 
 const app = express();
-// dotenv.config({ path: path.join(__dirname, ".env") });
 dotenv.config({ path: ".env" });
 
 const port = process.env.PORT || 8800;
