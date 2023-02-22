@@ -1,45 +1,28 @@
----
-title: ExpressJS Mongoose
-description: An ExpressJS server that connects to a MongoDB database
-tags:
-  - express
-  - mongodb
-  - mongoose
-  - typescript
----
+ 
+# Booking API
 
-# ExpressJS Mongoose Example
-
-This example starts an [ExpressJS](https://expressjs.com/) server that connects to a Railway MongoDB database using [MongooseJS](https://mongoosejs.com/)
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/RM1WxR)
+This project was made with [ExpressJS](https://expressjs.com/) server that connects to a Railway MongoDB database using [MongooseJS](https://mongoosejs.com/)
 
 ## ✨ Features
-
 - Express
 - TypeScript
 - MongoDB with Mongoose
+- JWT Authentication
+## 
 
-## 💁‍♀️ How to use
+## 📝 The project has:
+-1 JWT package for creating and verification of tokens (+ its types)
 
-- Install dependencies `yarn`
-- Connect to your Railway project `railway link`
-- Start the development server `railway run yarn dev`
+-2 routes for user authentication (for sign up and login)
 
-## 📝 Notes
+-1 controller, 1 service
 
-The starter contains a single `Country` model that you can read from and write to.
+-1 model, 1 collection in MongoDb
 
-There are two main routes on the server:
+-1 bcrypt package for hashing and comparing passwords (+ its types)
 
-- A `GET` route - `/countries` which returns all the countries
-- A `POST` route - `/countries` which can be used to add a new country
+-1 middleware for authentication
 
-Example post request to add a new country:
-
-```
-curl -H "Content-Type: application/json" \
-  --request POST \
-  -d '{"name":"India","iso2code":"IN"}' \
-  http://localhost:3333/countries
-```
+``Originally this project was in Vanilla Javascript but was migrated to TypeScript,
+I want to gave a thanks to @Julie Cherner for her tutorial in dev.to
+and @Lamar for the project idea.``
