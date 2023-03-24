@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "incremental": true,
-    "target": "ES3",
+    "target": "ES2020",
     "module": "commonjs",
     "sourceMap": true,
     "strict": true,

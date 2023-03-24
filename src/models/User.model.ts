@@ -7,7 +7,7 @@ export interface I_User extends Document {
   isAdmin: boolean;
 }
 
-const UserSchema = new Schema(
+const UserSchema = new Schema<I_User>(
   {
     userName: {
       type: String,

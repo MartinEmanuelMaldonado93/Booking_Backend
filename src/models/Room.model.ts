@@ -1,6 +1,6 @@
 import { Schema, model, Document } from "mongoose";
 
-export interface Room extends Document {
+export interface I_Room extends Document {
   title: string;
   price: string;
   maxPeople: number;
@@ -8,7 +8,7 @@ export interface Room extends Document {
   roomNumber: { numberRoom: number; unavailableDates: string[] }[];
 }
 
-const RoomSchema = new Schema(
+const RoomSchema = new Schema<I_Room>(
   {
     title: {
       type: String,
@@ -31,4 +31,4 @@ const RoomSchema = new Schema(
   { timestamps: true }
 );
 
-export default model<Room>("Room", RoomSchema);
+export default model<I_Room>("Room", RoomSchema);

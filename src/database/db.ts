@@ -1,7 +1,4 @@
 import mongoose from "mongoose";
-// import path from "path";
-// import dotenv from "dotenv";
-// dotenv.config({ path: path.join(__dirname, ".env") });
 
 export const connect = async () => {
   if (!process.env.MONGO_URL) {
@@ -9,11 +6,7 @@ export const connect = async () => {
   }
 
   try {
-    await mongoose.connect(process.env.MONGO_URL!, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    });
+    await mongoose.connect(process.env.MONGO_URL! );
     // console.log("Connected to mongoDB.");
   } catch (error) {
     throw error;
