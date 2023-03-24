@@ -8,7 +8,7 @@ import {
   getHotels,
   updateHotel,
 } from "../controllers/Hotel.controller";
-import { authorization } from "../middleware/auth";
+import { authJWT } from "../middleware/auth";
 
 const router = express.Router();
 

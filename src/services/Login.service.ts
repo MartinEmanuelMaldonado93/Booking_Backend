@@ -3,6 +3,7 @@ import { hashPassword, verifyPassword } from "../middleware/bcrypt";
 import { UserToken } from "../types";
 import { createJWTToken } from "../middleware/auth";
 
+/** Creates new user with encrypted password */
 export const signUpService = async (
   nameReceived: string,
   password: string
@@ -19,6 +20,7 @@ export const signUpService = async (
   return newUser;
 };
 
+/** Return user verified with a token */
 export const signInService = async (
   signName: string,
   signinPassword: string
