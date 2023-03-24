@@ -11,9 +11,12 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { connect } from "./database/db";
 import { hotel, login, rooms, user } from "./routes";
+import { checkEnviromentVariables } from "./helpers/checkEnv";
 
 const app = express();
+
 dotenv.config({ path: ".env" });
+checkEnviromentVariables();
 
 const port = process.env.PORT || 8800;
 app.use(cors());

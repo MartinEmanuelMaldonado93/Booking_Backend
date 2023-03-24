@@ -1,5 +1,5 @@
-import { NextFunction, RequestHandler, Response } from 'express';
-import { Hotel } from '../models/Hotel.model';
+import { RequestHandler } from 'express';
+import Hotel from '../models/Hotel.model';
 import Room from '../models/Room.model';
 
 export const createHotel: RequestHandler = async (req, res, next) => {

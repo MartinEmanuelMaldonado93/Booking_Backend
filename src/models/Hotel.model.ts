@@ -1,6 +1,6 @@
-import { Schema, model, connect, Document, HydratedDocument } from "mongoose";
+import { Schema, model } from "mongoose";
 
-export interface I_Hotel extends Document {
+export interface I_Hotel {
   name: string;
   type: string;
   city: string;
@@ -65,5 +65,4 @@ const HotelSchema = new Schema<I_Hotel>({
   },
 });
 
-const Hotel = model<I_Hotel>("Hotel", HotelSchema);
-export { Hotel };
+export default model<I_Hotel>("Hotel", HotelSchema);

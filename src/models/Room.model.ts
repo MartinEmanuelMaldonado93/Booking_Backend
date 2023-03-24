@@ -1,6 +1,6 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-export interface I_Room extends Document {
+export interface I_Room {
 	title: string;
 	price: string;
 	maxPeople: number;
