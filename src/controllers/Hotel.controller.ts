@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
-import Hotel from '../models/Hotel.model';
+import { HydratedDocument } from 'mongoose';
+import Hotel, { I_Hotel } from '../models/Hotel.model';
 import Room from '../models/Room.model';
 
 export const createHotel: RequestHandler = async (req, res, next) => {
@@ -104,16 +105,17 @@ export const getHotelById: RequestHandler = async (req, res, next) => {
 
 export const getHotelRooms: RequestHandler = async (req, res, next) => {
 	try {
-		const hotel = await Hotel.findById(req.params.id);
+		const hotel: HydratedDocument<I_Hotel> | null =
+			await Hotel.findById(req.params.id);
 		if (!hotel) {
 			next();
 			return;
 		}
-    
+
 		const rooms = hotel.rooms;
 
 		const roomsAvailable = await Promise.all(
-			rooms.map((room) => Room.find({room}))
+			rooms.map((room) => Room.find({ room }))
 		);
 
 		res.status(200).json(roomsAvailable);
