@@ -35,7 +35,7 @@ export const deleteHotel: RequestHandler = async (req, res) => {
     res.status(500).json(error);
   }
 };
-
+/** Requires limit */
 export const getHotels: RequestHandler = async (req, res, next) => {
   const { min, max, limit, ...others } = req.query;
 
@@ -97,6 +97,16 @@ export const countByType: RequestHandler = async (req, res, next) => {
 export const getHotelById: RequestHandler = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);
+    res.status(200).json(hotel);
+  } catch (error) {
+    next(error);
+  }
+};
+/** Requires locationCity param */
+export const getHotelByLocation: RequestHandler = async (req, res, next) => {
+  const { location } = req.params;
+  try {
+    const hotel = await Hotel.find({ city: location });
     res.status(200).json(hotel);
   } catch (error) {
     next(error);

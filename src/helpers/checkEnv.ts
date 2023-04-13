@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { getErrorMessage } from "./createError";
 
 const Enviroments = z.object({
   MONGO_URL: z.string().url(),
