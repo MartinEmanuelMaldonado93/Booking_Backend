@@ -1,16 +1,18 @@
- 
 # Booking API
 
 This project was made with [ExpressJS](https://expressjs.com/) server that connects to a Railway MongoDB database using [MongooseJS](https://mongoosejs.com/)
 
 ## ✨ Features
+
 - Express
 - TypeScript
 - MongoDB with Mongoose
 - JWT Authentication
-## 
+
+##
 
 ## 📝 The project has:
+
 -1 JWT package for creating and verification of tokens (+ its types)
 
 -2 routes for user authentication (for sign up and login)
@@ -23,6 +25,6 @@ This project was made with [ExpressJS](https://expressjs.com/) server that conne
 
 -1 middleware for authentication
 
-``Originally this project was in Vanilla Javascript but was migrated to TypeScript,
+`Originally this project was in Vanilla Javascript but was migrated to TypeScript,
 I want to gave a thanks to @Julie Cherner for her tutorial in dev.to
-and @Lamar for the project idea.``
+and @Lamar for the project idea.`

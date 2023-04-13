@@ -26,7 +26,9 @@ export const deleteUser: RequestHandler = async (req, res) => {
 
 export const getUserById: RequestHandler = async (req, res, next) => {
   try {
-    const user: HydratedDocument<I_User> | null = await User.findById(req.params.id);
+    const user: HydratedDocument<I_User> | null = await User.findById(
+      req.params.id
+    );
     if (!user) throw new Error("user is not found");
 
     res.status(200).json(user);
@@ -37,7 +39,7 @@ export const getUserById: RequestHandler = async (req, res, next) => {
 
 export const getUsers: RequestHandler = async (req, res, next) => {
   try {
-    const users : HydratedDocument<I_User>[] = await User.find();
+    const users: HydratedDocument<I_User>[] = await User.find();
     res.status(200).json(users);
   } catch (error) {
     next(error);

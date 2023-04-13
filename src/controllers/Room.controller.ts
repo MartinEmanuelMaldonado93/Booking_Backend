@@ -35,7 +35,11 @@ export const updateRoom: RequestHandler = async (req, res) => {
   }
 };
 
-export const updateRoomAvailability: RequestHandler = async (req, res, next) => {
+export const updateRoomAvailability: RequestHandler = async (
+  req,
+  res,
+  next
+) => {
   try {
     await Room.updateOne(
       { "roomNumbers._id": req.params.id },
