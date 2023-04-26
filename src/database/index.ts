@@ -8,7 +8,7 @@ export const connect = async () => {
   }
 };
 
-const database = mongoose.connection;
+export const database = mongoose.connection;
 
 database.on(
   "error",
@@ -17,4 +17,4 @@ database.on(
 database.on("disconnected", () => console.log("mongoDB disconnected!"));
 database.once("open", () => console.log("✅ mongodb connected successfully"));
 
-mongoose.Promise = Promise;
+// mongoose.Promise = Promise;

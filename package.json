@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "b": "tsc",
+    "build": "tsc",
     "start": "node dist/index.js",
+    "dep": "yarn build && yarn start",
     "format": "prettier --write ."
   },
   "dependencies": {

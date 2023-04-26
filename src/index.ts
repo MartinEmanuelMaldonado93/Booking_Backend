@@ -1,15 +1,12 @@
-import "./database/db";
 import express, {
-  ErrorRequestHandler,
   NextFunction,
   Request,
   Response,
 } from "express";
 import dotenv from "dotenv";
-import path from "path";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { connect } from "./database/db";
+import { connect } from "./database";
 import { hotel, login, rooms, user } from "./routes";
 import { checkEnviromentVariables } from "./helpers/checkEnv";
 
