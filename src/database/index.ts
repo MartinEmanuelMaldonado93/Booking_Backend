@@ -17,4 +17,4 @@ database.on(
 database.on("disconnected", () => console.log("mongoDB disconnected!"));
 database.once("open", () => console.log("✅ mongodb connected successfully"));
 
-// mongoose.Promise = Promise;
+mongoose.Promise = Promise;

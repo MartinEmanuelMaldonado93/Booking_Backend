@@ -13,7 +13,7 @@ import { checkEnviromentVariables } from "./helpers/checkEnv";
 const app = express();
 
 dotenv.config({ path: ".env" });
-checkEnviromentVariables();
+// checkEnviromentVariables();
 
 const port = process.env.PORT || 8800;
 app.use(cors());
